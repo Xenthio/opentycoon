@@ -3,5 +3,5 @@
 namespace OpenTycoon;
 public class PointEntity : ModelEntity
 {
-	public int Value = 1;
+	public float Value = 1;
 }

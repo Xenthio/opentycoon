@@ -3,7 +3,7 @@ namespace OpenTycoon;
 
 public partial class Player : AnimatedEntity
 {
-	[Net] public int Money { get; set; }
+	[Net] public float Money { get; set; }
 	[Net] public TycoonManagerEntity OwnedTycoon { get; set; }
 	/// <summary>
 	/// Called when the entity is first created 
