@@ -14,9 +14,9 @@
     "MaxPlayers": 64,
     "MinPlayers": 1,
     "GameNetworkType": "Multiplayer",
-    "MapSelect": "Unrestricted",
+    "MapSelect": "Tagged",
     "MapList": [
-      "facepunch.flatgrass"
+      "xenthio.opentycoonmap"
     ],
     "RankType": "None",
     "PerMapRanking": false,
@@ -86,6 +86,10 @@
       "VelocityIterations": 4,
       "SoftBodyIterations": 1,
       "SoftBodySubsteps": 1
-    }
+    },
+    "Summary": "",
+    "Description": "A tycoon game, Heavily map based so people can create custom maps with different themes, layouts and items, it\u0027s open source under MIT license too: https://github.com/Xenthio/opentycoon",
+    "Public": true,
+    "ReplaceTags": "tycoon"
   }
 }
