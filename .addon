@@ -30,7 +30,8 @@
         "ladder": "Ignore",
         "water": "Trigger",
         "point": "Collide",
-        "player": "Collide"
+        "player": "Collide",
+        "pointonly": "Collide"
       },
       "Pairs": [
         {
@@ -66,6 +67,11 @@
         {
           "a": "trigger",
           "b": "player",
+          "r": "Trigger"
+        },
+        {
+          "a": "point",
+          "b": "pointonly",
           "r": "Trigger"
         }
       ]
