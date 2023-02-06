@@ -50,11 +50,11 @@ public partial class Button : BaseTycoonEntity
 			{
 				if ( ply.Money < Price )
 				{
-					SetMaterialOverride( "materials/dev/red.vmat" );
+					SetMaterialOverride( "materials/dev/primary_red.vmat" );
 				}
 				else
 				{
-					SetMaterialOverride( "materials/dev/green.vmat" );
+					SetMaterialOverride( "materials/dev/primary_green.vmat" );
 				}
 			}
 		}
