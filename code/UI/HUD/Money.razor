@@ -1,0 +1,63 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.UI.Construct; 
+@using System;
+@namespace OpenTycoon
+
+<style>
+	.Money {
+		position: absolute;
+		flex-direction:column;  
+		min-width:256px;
+		padding:24px;
+
+		top: 40px;
+		left: 40px;
+
+		font-size: 48px;
+		font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-weight: 800;
+
+		color: #FFF;
+		background-color: rgba(0,0,0,0.5);
+
+		backdrop-filter:blur(16px);
+
+		justify-content: center;
+		align-items: center;
+
+		border-radius: 8px;
+	}
+	.main {
+		bottom: 4px;
+	}
+
+	.sub { 
+		justify-content: flex-end;
+		align-items: flex-end;
+		align-self: flex-end;
+		bottom:4px;
+		font-size: 16px;
+	}
+</style>
+
+<root class="Money">
+	
+	@if ( Game.LocalPawn is Player ply )
+	{
+		<div class="main">$@ply.Money</div> 
+	} 
+
+</root>
+
+@code
+{  
+	protected override int BuildHash()
+	{
+		if ( Game.LocalPawn is Player ply )
+		{
+			return HashCode.Combine(ply.Money);
+		} 
+		return HashCode.Combine(1);
+	}
+}

@@ -18,6 +18,11 @@ public partial class MyGame : GameManager
 {
 	public MyGame()
 	{
+		if ( Game.IsServer )
+		{
+
+			new HudPanel();
+		}
 	}
 
 	/// <summary>
