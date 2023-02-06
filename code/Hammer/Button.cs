@@ -12,7 +12,7 @@ public partial class Button : BaseTycoonEntity
 
 	[Property( Title = "Parent Tycoon" )]
 	[FGDType( "target_destination" )]
-	public string ParentTycoon { get; set; }
+	public EntityTarget ParentTycoon { get; set; }
 	ButtonLabelEntity Label { get; set; }
 	public override void Spawn()
 	{
@@ -39,6 +39,25 @@ public partial class Button : BaseTycoonEntity
 	{
 		base.TycoonDeleted();
 		Label?.Delete();
+	}
+	[Event.Tick.Server]
+	public void Tick()
+	{
+
+		if ( ParentTycoon.GetTarget<TycoonManagerEntity>() is TycoonManagerEntity mng )
+		{
+			if ( mng.TycoonOwner is Player ply )
+			{
+				if ( ply.Money < Price )
+				{
+					SetMaterialOverride( "materials/dev/red.vmat" );
+				}
+				else
+				{
+					SetMaterialOverride( "materials/dev/green.vmat" );
+				}
+			}
+		}
 	}
 	public override void Touch( Entity other )
 	{
