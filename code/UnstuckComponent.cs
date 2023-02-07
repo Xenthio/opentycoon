@@ -4,7 +4,7 @@ using Sandbox;
 namespace OpenTycoon;
 public class UnstuckComponent : EntityComponent
 {
-	public bool Debug = true;
+	public bool Debug = false;
 	public bool IsActive; // replicate
 
 	internal int StuckTries = 0;
