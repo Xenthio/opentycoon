@@ -9,10 +9,10 @@ public class FirstPersonCamera : SimulatedComponent
 
 		var pl = Entity as Player;
 		// Update rotation every frame, to keep things smooth
-		Entity.Rotation = pl.ViewAngles.ToRotation();
+		var rotation = pl.ViewAngles.ToRotation();
 
 		Camera.Position = Entity.Position + new Vector3( 0, 0, 64 );
-		Camera.Rotation = Entity.Rotation;
+		Camera.Rotation = rotation;
 
 		// Set field of view to whatever the user chose in options
 		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Game.Preferences.FieldOfView );

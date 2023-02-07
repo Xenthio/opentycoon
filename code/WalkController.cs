@@ -3,7 +3,7 @@ using Sandbox;
 using System;
 namespace OpenTycoon;
 [Library]
-public partial class WalkController : SimulatedComponent
+public partial class WalkController : MovementComponent
 {
 	[Net] public float SprintSpeed { get; set; } = 320.0f;
 	[Net] public float WalkSpeed { get; set; } = 150.0f;
@@ -58,7 +58,6 @@ public partial class WalkController : SimulatedComponent
 	/// </summary>
 	public Vector3 TraceOffset;
 
-	public Vector3 WishVelocity { get; set; }
 	public virtual void SetBBox( Vector3 mins, Vector3 maxs )
 	{
 		if ( (Entity as Player).Mins == mins && (Entity as Player).Maxs == maxs )

@@ -19,10 +19,12 @@ public partial class Player : AnimatedEntity
 		// Use a watermelon model
 		//
 		Tags.Add( "player" );
-		SetModel( "models/sbox_props/watermelon/watermelon.vmdl" );
+		//SetModel( "models/sbox_props/watermelon/watermelon.vmdl" );
+		SetModel( "models/citizen/citizen.vmdl" );
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 		Components.Add( new WalkController() );
 		Components.Add( new FirstPersonCamera() );
+		Components.Add( new CitizenAnimationComponent() );
 		Components.Add( new UnstuckComponent() );
 		EnableDrawing = true;
 		EnableHideInFirstPerson = true;
