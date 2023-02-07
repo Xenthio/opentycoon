@@ -7,12 +7,16 @@ namespace OpenTycoon;
 [Title( "Tycoon Brush" ), Category( "Gameplay" ), Icon( "brush" )]
 public class TycoonBrush : BaseTycoonEntity
 {
+	[Property]
+	public bool Enabled { get; protected set; } = false;
 	public override void Spawn()
 	{
 		base.Spawn();
+
 		SetupPhysicsFromModel( PhysicsMotionType.Static );
-		EnableDrawing = false;
-		EnableAllCollisions = false;
+
+		EnableDrawing = Enabled;
+		EnableAllCollisions = Enabled;
 	}
 	public override void TycoonSpawned()
 	{

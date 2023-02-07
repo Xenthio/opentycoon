@@ -28,6 +28,7 @@ public partial class TycoonManagerEntity : ModelEntity
 			Log.Info( "touched by ply" );
 			if ( ply.OwnedTycoon == null )
 			{
+				Log.Info( $"Player \"{ply.Client.Name}\" is claiming {this}" );
 				TycoonOwner = ply;
 				ply.OwnedTycoon = this;
 				Label.Delete();

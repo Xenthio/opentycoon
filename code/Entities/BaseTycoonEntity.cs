@@ -1,5 +1,4 @@
 ﻿using Sandbox;
-
 namespace OpenTycoon;
 public class BaseTycoonEntity : ModelEntity
 {

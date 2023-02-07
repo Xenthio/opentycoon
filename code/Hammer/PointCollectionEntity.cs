@@ -18,8 +18,13 @@ public class PointCollectionEntity : BrushEntity
 		if ( !Enabled ) return;
 		if ( other is PointEntity pnt )
 		{
-			ParentTycoon.GetTarget<TycoonManagerEntity>().TycoonOwner.Money += pnt.Value;
+			var d = pnt.Value;
 			pnt.Delete();
+			Log.Info( ParentTycoon );
+			Log.Info( ParentTycoon.GetTarget<TycoonManagerEntity>() );
+			Log.Info( ParentTycoon.GetTarget<TycoonManagerEntity>().TycoonOwner );
+			Log.Info( ParentTycoon.GetTarget<TycoonManagerEntity>().TycoonOwner.Money );
+			ParentTycoon.GetTarget<TycoonManagerEntity>().TycoonOwner.Money += d;
 		}
 	}
 

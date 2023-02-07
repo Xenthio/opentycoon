@@ -9,7 +9,7 @@ namespace OpenTycoon;
 [Library( "tycoon_push_volume" )]
 [HammerEntity, Solid, DrawAngles( "forcedirection" )]
 [Title( "Push Volume" ), Category( "Triggers" ), Icon( "deblur" )]
-public partial class TycoonPushVolumeEntity : BaseTrigger
+public partial class TycoonPushVolumeEntity : BaseTycoonTrigger
 {
 	/// <summary>
 	/// How strong should we be pushing other entities
