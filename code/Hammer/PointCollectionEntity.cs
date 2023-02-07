@@ -20,10 +20,6 @@ public class PointCollectionEntity : BrushEntity
 		{
 			var d = pnt.Value;
 			pnt.Delete();
-			Log.Info( ParentTycoon );
-			Log.Info( ParentTycoon.GetTarget<TycoonManagerEntity>() );
-			Log.Info( ParentTycoon.GetTarget<TycoonManagerEntity>().TycoonOwner );
-			Log.Info( ParentTycoon.GetTarget<TycoonManagerEntity>().TycoonOwner.Money );
 			ParentTycoon.GetTarget<TycoonManagerEntity>().TycoonOwner.Money += d;
 		}
 	}
