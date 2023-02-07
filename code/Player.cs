@@ -3,6 +3,9 @@ namespace OpenTycoon;
 
 public partial class Player : AnimatedEntity
 {
+
+	public Vector3 Mins;
+	public Vector3 Maxs;
 	[Net] public float Money { get; set; }
 	[Net] public TycoonManagerEntity OwnedTycoon { get; set; }
 	/// <summary>
@@ -20,6 +23,7 @@ public partial class Player : AnimatedEntity
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 		Components.Add( new WalkController() );
 		Components.Add( new FirstPersonCamera() );
+		Components.Add( new UnstuckComponent() );
 		EnableDrawing = true;
 		EnableHideInFirstPerson = true;
 		EnableShadowInFirstPerson = true;

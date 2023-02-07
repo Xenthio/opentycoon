@@ -51,8 +51,6 @@ public partial class WalkController : SimulatedComponent
 	// Eye Height 64
 	// Duck Eye Height 28
 
-	protected Vector3 mins;
-	protected Vector3 maxs;
 
 	/// <summary>
 	/// Any bbox traces we do will be offset by this amount.
@@ -63,11 +61,11 @@ public partial class WalkController : SimulatedComponent
 	public Vector3 WishVelocity { get; set; }
 	public virtual void SetBBox( Vector3 mins, Vector3 maxs )
 	{
-		if ( this.mins == mins && this.maxs == maxs )
+		if ( (Entity as Player).Mins == mins && (Entity as Player).Maxs == maxs )
 			return;
 
-		this.mins = mins;
-		this.maxs = maxs;
+		(Entity as Player).Mins = mins;
+		(Entity as Player).Maxs = maxs;
 	}
 
 	/// <summary>
@@ -240,8 +238,8 @@ public partial class WalkController : SimulatedComponent
 		bool Debug = false;
 		if ( Debug )
 		{
-			DebugOverlay.Box( Entity.Position + TraceOffset, mins, maxs, Color.Red );
-			DebugOverlay.Box( Entity.Position, mins, maxs, Color.Blue );
+			DebugOverlay.Box( Entity.Position + TraceOffset, pl.Mins, pl.Maxs, Color.Red );
+			DebugOverlay.Box( Entity.Position, pl.Mins, pl.Maxs, Color.Blue );
 
 			var lineOffset = 0;
 			if ( Game.IsServer ) lineOffset = 10;
@@ -327,8 +325,9 @@ public partial class WalkController : SimulatedComponent
 
 	public virtual void StepMove()
 	{
+		var pl = Entity as Player;
 		MoveHelper mover = new MoveHelper( Entity.Position, Entity.Velocity );
-		mover.Trace = mover.Trace.Size( mins, maxs ).Ignore( Entity );
+		mover.Trace = mover.Trace.Size( pl.Mins, pl.Maxs ).Ignore( Entity );
 		mover.MaxStandableAngle = GroundAngle;
 
 		mover.TryMoveWithStep( Time.Delta, StepSize );
@@ -339,8 +338,9 @@ public partial class WalkController : SimulatedComponent
 
 	public virtual void Move()
 	{
+		var pl = Entity as Player;
 		MoveHelper mover = new MoveHelper( Entity.Position, Entity.Velocity );
-		mover.Trace = mover.Trace.Size( mins, maxs ).Ignore( Entity );
+		mover.Trace = mover.Trace.Size( pl.Mins, pl.Maxs ).Ignore( Entity );
 		mover.MaxStandableAngle = GroundAngle;
 
 		mover.TryMove( Time.Delta );
@@ -563,7 +563,7 @@ public partial class WalkController : SimulatedComponent
 		Vector3 end = start + (IsTouchingLadder ? (LadderNormal * -1.0f) : wishvel) * ladderDistance;
 
 		var pm = Trace.Ray( start, end )
-					.Size( mins, maxs )
+					.Size( pl.Mins, pl.Maxs )
 					.WithTag( "ladder" )
 					.Ignore( Entity )
 					.Run();
@@ -697,7 +697,8 @@ public partial class WalkController : SimulatedComponent
 	/// </summary>
 	public virtual TraceResult TraceBBox( Vector3 start, Vector3 end, float liftFeet = 0.0f )
 	{
-		return TraceBBox( start, end, mins, maxs, liftFeet );
+		var pl = Entity as Player;
+		return TraceBBox( start, end, pl.Mins, pl.Maxs, liftFeet );
 	}
 
 	/// <summary>
