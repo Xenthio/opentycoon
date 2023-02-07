@@ -77,11 +77,12 @@
       ]
     },
     "Physics": {
-      "SubSteps": 1,
+      "SubSteps": 2,
       "TimeScale": 1,
       "Gravity": "0,0,-800",
       "AirDensity": 1.2,
       "SleepingEnabled": true,
+      "SimulationMode": "Continuous",
       "PositionIterations": 2,
       "VelocityIterations": 4,
       "SoftBodyIterations": 1,

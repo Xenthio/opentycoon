@@ -42,7 +42,6 @@ public class PointCreationEntity : BaseTycoonEntity
 			a.Scale = Scale;
 			a.Tags.Add( "solid" );
 			a.Tags.Add( "point" );
-			a.PhysicsBody.Mass = 10f;
 		}
 	}
 }
