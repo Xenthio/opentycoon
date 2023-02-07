@@ -17,14 +17,14 @@ public class CitizenAnimationComponent : SimulatedComponent
 		var MovementMode = pl.Components.Get<MovementComponent>();
 
 		var idealRotation = Rotation.LookAt( rotation.Forward.WithZ( 0 ), Vector3.Up );
-		pl.Rotation = Rotation.Slerp( Entity.Rotation, idealRotation, MovementMode.WishVelocity.Length * Time.Delta * turnSpeed );
-		pl.Rotation = Entity.Rotation.Clamp( idealRotation, 45.0f, out var shuffle ); // lock facing to within 45 degrees of look direction
+		pl.Rotation = Rotation.Slerp( pl.Rotation, idealRotation, MovementMode.WishVelocity.Length * Time.Delta * turnSpeed );
+		pl.Rotation = pl.Rotation.Clamp( idealRotation, 45.0f, out var shuffle ); // lock facing to within 45 degrees of look direction
 
 		CitizenAnimationHelper animHelper = new CitizenAnimationHelper( pl );
 
 		animHelper.WithWishVelocity( MovementMode.WishVelocity );
-		animHelper.WithVelocity( Entity.Velocity );
-		animHelper.WithLookAt( Entity.AimRay.Position + Entity.AimRay.Forward * 100.0f, 1.0f, 1.0f, 0.5f );
+		animHelper.WithVelocity( pl.Velocity );
+		animHelper.WithLookAt( pl.AimRay.Position + pl.AimRay.Forward * 100.0f, 1.0f, 1.0f, 0.5f );
 		animHelper.AimAngle = rotation;
 		animHelper.FootShuffle = shuffle;
 		animHelper.DuckLevel = MathX.Lerp( animHelper.DuckLevel, Entity.Tags.Has( "ducked" ) ? 1 : 0, Time.Delta * 10.0f );
@@ -45,9 +45,10 @@ public class CitizenAnimationComponent : SimulatedComponent
 			carry.SimulateAnimator( animHelper );
 		}
 		else
-		{
-			animHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
-			animHelper.AimBodyWeight = 0.5f;
+		{*/
+		animHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
+		animHelper.AimBodyWeight = 0.5f;
+		/*
 		}
 
 		lastWeapon = ActiveChild;

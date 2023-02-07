@@ -68,4 +68,8 @@ public partial class Player : AnimatedEntity
 			i.FrameSimulate( cl );
 		}
 	}
+	/// <summary>
+	/// Override the aim ray to use the player's eye position and rotation.
+	/// </summary>
+	public override Ray AimRay => new Ray( Position + new Vector3( 0, 0, 64 ), ViewAngles.Forward );
 }
